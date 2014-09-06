@@ -2,15 +2,15 @@
 $id = $_GET['id'];
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "http://music.163.com/api/song/detail?ids=[".$id."]"); //$url 目标地址
-    curl_setopt($ch, CURLOPT_REFERER, "http://music.163.com"); //$referer_url 要伪造的地址
-    curl_setopt($ch, CURLOPT_HEADER,0); //只获取http头信息,如果不使用这个设置,则相当在服务器上下载该文件了.这样会占用服务器的资源.
-    curl_setopt($ch, CURLOPT_NOBODY, 0); //不返回html的body信息
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //返回数据流，不直接输出
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10); //超时时长，单位秒
-//为了支持cookie
+    curl_setopt($ch, CURLOPT_URL, "http://music.163.com/api/song/detail?ids=[".$id."]");
+    curl_setopt($ch, CURLOPT_REFERER, "http://music.163.com"); 
+    curl_setopt($ch, CURLOPT_HEADER,0); 
+    curl_setopt($ch, CURLOPT_NOBODY, 0); 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10); 
+
     $result = curl_exec($ch);
-//释放curl句柄
+
     curl_close($ch);
     $song = json_decode($result)->songs;
     $name =  $song[0]->name;

@@ -1,7 +1,7 @@
 music163-API
 ============
 
-An API to retrieve data from music 163
+An PHP API to retrieve data from music 163
 
 Using CURL to fake referer ip address to music.163.com
 
